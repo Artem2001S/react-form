@@ -3,9 +3,10 @@
 .ResultForm {
   display: flex;
   flex-direction: column;
-  justify-content: center;
 
-  padding: 50px 20px;
+  padding: 50px;
+  border: 1px solid $input_border;
+  background-color: #f5f3f3;
 }
 
 .label {
@@ -18,4 +19,5 @@
   font-weight: bold;
 
   cursor: pointer;
+  word-break: break-all;  
 }
