@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Form from './components/Form/Form';
+import ResultForm from './components/ResultForm/ResultForm';
 
 function App() {
   const inputs = [
@@ -42,12 +43,13 @@ function App() {
       return inputObject.name === inputName ? { ...inputObject, value: event.target.value } : inputObject;
     });
     setInputValues(newInputs);
-    
+
   };
 
   return (
     <div>
       <Form inputs={inputs} inputChangeHandler={handleChange} />
+      <ResultForm inputs={inputValues} />
     </div>
   );
 }

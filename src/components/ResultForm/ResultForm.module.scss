@@ -1,0 +1,21 @@
+@import "../../globalStyles/variables.scss";
+
+.ResultForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 50px 20px;
+}
+
+.label {
+  font-size: 21px;
+}
+
+.userValue {
+  color: $blue;
+  font-size: 21px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
