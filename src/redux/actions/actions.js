@@ -1,4 +1,4 @@
-import { CHANGE_INPUT_VALUE } from "./actionTypes";
+import { CHANGE_INPUT_VALUE } from './actionTypes';
 
 export function changeInputValue(newValue, inputName) {
   return {

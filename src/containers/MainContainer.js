@@ -19,7 +19,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleChange: (e, inputName) => { dispatch(changeInputValue(e.target.value, inputName)); }
+  handleChange: (e, inputName) =>
+    dispatch(changeInputValue(e.target.value, inputName))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
