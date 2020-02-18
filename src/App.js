@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Form from './components/Form/Form';
 import ResultForm from './components/ResultForm/ResultForm';
+import HorizontalList from './components/HorizontalList/HorizontalList';
 
 function App() {
   const inputs = [
@@ -48,8 +49,10 @@ function App() {
 
   return (
     <div>
-      <Form inputs={inputs} inputChangeHandler={handleChange} />
-      <ResultForm inputs={inputValues} />
+      <HorizontalList>
+        <Form inputs={inputs} inputChangeHandler={handleChange} />
+        <ResultForm inputs={inputValues} />
+      </HorizontalList>
     </div>
   );
 }
