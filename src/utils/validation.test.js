@@ -45,3 +45,20 @@ describe.each(invalidCards)('test credit-card format', (card) => {
     expect(validation.validateCreditCardFormat(card)).not.toBe(true);
   });
 });
+
+
+
+const validPhoneNumbers = ['+7 (999) 999-99-99'];
+const invalidPhoneNumbers = ['+7 999 999-99-99', '8 999 999-99-99', '+79999999999', '+7 999 9999999', '8 (999) 999-99-99'];
+
+describe.each(validPhoneNumbers)('test phone number format', (phoneNumber) => {
+  test(`testing phone number format: ${phoneNumber}`, () => {
+    expect(validation.validatePhoneNumber(phoneNumber)).toBe(true);
+  });
+});
+
+describe.each(invalidPhoneNumbers)('test phone number format', (phoneNumber) => {
+  test(`testing phone number format: ${phoneNumber}`, () => {
+    expect(validation.validatePhoneNumber(phoneNumber)).not.toBe(true);
+  });
+});

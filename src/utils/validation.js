@@ -40,3 +40,12 @@ export const validateCreditCardFormat = (str) => {
 
   return true;
 };
+
+export const validatePhoneNumber = (str) => {
+  const regex = /^\+\d{1,3}\s?\(\d{3}\)\s?\d{3}(-\d{2}){2}$/;
+
+  if (!regex.test(str)) {
+    return 'Введите номер телефона в формате +7 (999) 999-99-99';
+  }
+  return true;
+};
