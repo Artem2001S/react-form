@@ -1,0 +1,23 @@
+@import "globalStyles/variables.scss";
+
+.ResultForm {
+  display: flex;
+  flex-direction: column;
+
+  padding: 50px;
+  border: 1px solid $input_border;
+  background-color: #f5f3f3;
+}
+
+.label {
+  font-size: 21px;
+}
+
+.userValue {
+  color: $blue;
+  font-size: 21px;
+  font-weight: bold;
+
+  cursor: pointer;
+  word-break: break-all;
+}

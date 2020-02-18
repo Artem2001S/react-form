@@ -1,0 +1,26 @@
+@import "globalStyles/variables.scss";
+
+.Button {
+  width: 320px;
+
+  border: none;
+  border-radius: 7px;
+
+  font-size: 22px;
+  padding: 5px;
+
+  background-color: $purple;
+  color: #ffffff;
+  text-align: center;
+
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    background-color: lighten($color: $purple, $amount: 15);
+  }
+
+  &.disabled {
+    background-color: $purple_whitesmoke;
+  }
+}
