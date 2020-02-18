@@ -1,4 +1,5 @@
 export const validateEmail = (str) => {
+  // eslint-disable-next-line no-useless-escape
   const regexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   if (!regexp.test(str)) {
@@ -25,6 +26,16 @@ export const validateDate = (str) => {
 
   if (Number(day) < 1 || Number(day) > daysInMonth) {
     return `Нет такого дня в ${month} месяце`;
+  }
+
+  return true;
+};
+
+export const validateCreditCardFormat = (str) => {
+  const regex = /[0-9]{4}[ ][0-9]{4}[ ][0-9]{4}[ ][0-9]{4}$/;
+
+  if (!regex.test(str)) {
+    return 'Введите данные карты в формате 0000 0000 0000 0000';
   }
 
   return true;

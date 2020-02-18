@@ -29,3 +29,19 @@ describe.each(invalidDates)('test dates', (date) => {
     expect(validation.validateDate(date)).not.toBe(true);
   });
 });
+
+
+const validCardsFormat = ['1342 0931 0322 1235', '4276 3212 3200 4121', '5161 0147 7841 0931'];
+const invalidCards = ['1342 0931 0322 123', '1342 0931  0322 1235', '1x42 0931 0322 1235', '1342 0931 0322 12354', '1342 0931 0322 '];
+
+describe.each(validCardsFormat)('test credit-card format', (card) => {
+  test(`testing card format: ${card}`, () => {
+    expect(validation.validateCreditCardFormat(card)).toBe(true);
+  });
+});
+
+describe.each(invalidCards)('test credit-card format', (card) => {
+  test(`testing card format: ${card}`, () => {
+    expect(validation.validateCreditCardFormat(card)).not.toBe(true);
+  });
+});
