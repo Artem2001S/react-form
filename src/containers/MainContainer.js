@@ -31,8 +31,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleChange: (e, inputName) =>
-    dispatch(changeInputValue(e.target.value, inputName)),
+  handleChange: (value, inputName) =>
+    dispatch(changeInputValue(value, inputName)),
   handleValidation: () => dispatch(validateInputs())
 });
 

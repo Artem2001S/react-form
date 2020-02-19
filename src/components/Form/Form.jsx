@@ -13,7 +13,7 @@ export default function Form({ inputs, inputChangeHandler, submitHandler }) {
           name={input.name}
           labelTitle={input.label}
           onChange={e => {
-            inputChangeHandler(e, input.name);
+            inputChangeHandler(e.target.value, input.name);
           }}
         />
       ))}
