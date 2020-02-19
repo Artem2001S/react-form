@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import HorizontalList from 'components/HorizontalList/HorizontalList';
 import Form from 'components/Form/Form';
@@ -12,6 +12,12 @@ function MainContainer({
   handleValidation
 }) {
   console.log(validationStatus);
+
+  useEffect(() => {
+    if (validationStatus === true) {
+      window.print();
+    }
+  }, [validationStatus]);
 
   return (
     <HorizontalList>
