@@ -6,16 +6,20 @@ import ResultForm from 'components/ResultForm/ResultForm';
 import { changeInputValue } from 'redux/actions/actions';
 
 function MainContainer({ inputsData, handleChange }) {
+
   return (
     <HorizontalList>
-      <Form inputs={inputsData} inputChangeHandler={handleChange} />
+      <Form
+        inputs={inputsData}
+        inputChangeHandler={handleChange}
+      />
       <ResultForm inputs={inputsData} />
     </HorizontalList>
   );
 }
 
 const mapStateToProps = state => ({
-  inputsData: state.formInputs
+  inputsData: state.formInputs.inputs
 });
 
 const mapDispatchToProps = dispatch => ({
