@@ -1,8 +1,9 @@
 import React from 'react';
 import Input from '../Input/Input';
 import classes from './Form.module.scss';
+import Button from 'components/Button/Button';
 
-export default function Form({ inputs, inputChangeHandler }) {
+export default function Form({ inputs, inputChangeHandler, submitHandler }) {
   return (
     <form className={classes.Form}>
       {inputs.map(input => (
@@ -16,6 +17,7 @@ export default function Form({ inputs, inputChangeHandler }) {
           }}
         />
       ))}
+      <Button onClick={submitHandler}>Print</Button>
     </form>
   );
 }

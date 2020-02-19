@@ -1,4 +1,4 @@
-import { CHANGE_INPUT_VALUE } from '../actions/actionTypes';
+import { CHANGE_INPUT_VALUE, VALIDATE_INPUTS } from '../actions/actionTypes';
 import {
   validatePhoneNumber,
   validateCreditCardFormat,
@@ -59,6 +59,25 @@ export const formInputs = (state = initialState, action) => {
             : { ...inputData }
         )
       };
+    case VALIDATE_INPUTS:
+      for (let i = 0; i < state.inputs.length; i++) {
+        const inputData = state.inputs[i];
+
+        if (!inputData.value.trim()) {
+          return {
+            ...state,
+            validationStatus: `Заполните поле ${inputData.label}`
+          };
+        }
+
+        if (inputData.validator !== undefined) {
+          const validationResult = inputData.validator(inputData.value.trim());
+          if (validationResult !== true) {
+            return { ...state, validationStatus: validationResult };
+          }
+        }
+      }
+      return { ...state, validationStatus: true };
     default:
       return state;
   }
