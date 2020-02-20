@@ -4,6 +4,7 @@ import HorizontalList from 'components/HorizontalList/HorizontalList';
 import Form from 'components/Form/Form';
 import ResultForm from 'components/ResultForm/ResultForm';
 import { changeInputValue, validateInputs } from 'redux/actions/actions';
+import Alert from 'components/Alert/Alert';
 
 function MainContainer({
   inputsData,
@@ -35,6 +36,7 @@ function MainContainer({
         submitHandler={handlePrintClick}
       />
       <ResultForm inputs={inputsData} />
+      <Alert>Alert</Alert>
     </HorizontalList>
   );
 }
