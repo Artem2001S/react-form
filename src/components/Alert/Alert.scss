@@ -9,5 +9,8 @@
   background-color: crimson;
   font-size: 0.9rem;
   color: #ffffff;
-}
 
+  @media print {
+    display: none;
+  }
+}

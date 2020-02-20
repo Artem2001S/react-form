@@ -13,7 +13,7 @@ export function validateInputsArray(inputs) {
       return `Заполните поле ${input.label}`;
     }
 
-    const validationResult = validateField(input.name, input.value);
+    const validationResult = validateField(input.name, input.value.trim());
 
     if (validationResult !== true) {
       return validationResult;

@@ -33,7 +33,7 @@ const initialState = {
       value: ''
     }
   ],
-  validationStatus: false
+  validationStatus: ''
 };
 
 export const formInputs = (state = initialState, action) => {

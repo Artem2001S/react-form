@@ -17,6 +17,7 @@ function MainContainer({
   changeValidationStatusHandler
 }) {
   const handlePrintClick = () => {
+    // update store
     changeValidationStatusHandler(validateInputsArray(inputsData));
 
     if (validateInputsArray(inputsData) === true) {
@@ -39,7 +40,9 @@ function MainContainer({
         submitHandler={handlePrintClick}
       />
       <ResultForm inputs={inputsData} />
-      {validationStatus === true || <Alert>{validationStatus}</Alert>}
+      {validationStatus === true || validationStatus === '' || (
+        <Alert>{validationStatus}</Alert>
+      )}
     </HorizontalList>
   );
 }
