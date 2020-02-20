@@ -9,10 +9,7 @@ export default function Form({ inputs, inputChangeHandler, submitHandler }) {
       {inputs.map(input => (
         <Input
           key={input.name}
-          placeholder={input.placeholder}
-          name={input.name}
-          labelTitle={input.label}
-          value={input.value}
+          inputData={input}
           onChange={e => {
             inputChangeHandler(e.target.value, input.name);
           }}
