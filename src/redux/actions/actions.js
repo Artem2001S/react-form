@@ -7,8 +7,9 @@ export function changeInputValue(newValue, inputName) {
   };
 }
 
-export function validateInputs() {
+export function changeValidationStatus(validationStatus) {
   return {
-    type: VALIDATE_INPUTS
+    type: VALIDATE_INPUTS,
+    payload: { validationStatus }
   };
 }
