@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { connect } from 'react-redux';
 import HorizontalList from 'components/HorizontalList/HorizontalList';
 import Form from 'components/Form/Form';
@@ -12,11 +12,13 @@ function MainContainer({
   handleChange,
   handleValidation
 }) {
-  console.log(validationStatus);
+  const [alertMessage, setAlertMessage] = useState('');
 
   const handlePrintClick = () => {
     if (validationStatus === true) {
       window.print();
+    } else {
+      setAlertMessage(validationStatus);
     }
   };
 
@@ -24,6 +26,7 @@ function MainContainer({
     (value, inputName) => {
       handleChange(value, inputName);
       handleValidation();
+      setAlertMessage('');
     },
     [handleChange, handleValidation]
   );
@@ -36,7 +39,7 @@ function MainContainer({
         submitHandler={handlePrintClick}
       />
       <ResultForm inputs={inputsData} />
-      <Alert>Alert</Alert>
+      {!alertMessage || <Alert>{validationStatus}</Alert>}
     </HorizontalList>
   );
 }
