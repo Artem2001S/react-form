@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { connect } from 'react-redux';
 import HorizontalList from 'components/HorizontalList/HorizontalList';
 import Form from 'components/Form/Form';
@@ -13,18 +13,26 @@ function MainContainer({
 }) {
   console.log(validationStatus);
 
-  useEffect(() => {
+  const handlePrintClick = () => {
     if (validationStatus === true) {
       window.print();
     }
-  }, [validationStatus]);
+  };
+
+  const inputChangeHandler = useCallback(
+    (value, inputName) => {
+      handleChange(value, inputName);
+      handleValidation();
+    },
+    [handleChange, handleValidation]
+  );
 
   return (
     <HorizontalList>
       <Form
         inputs={inputsData}
-        inputChangeHandler={handleChange}
-        submitHandler={handleValidation}
+        inputChangeHandler={inputChangeHandler}
+        submitHandler={handlePrintClick}
       />
       <ResultForm inputs={inputsData} />
     </HorizontalList>
