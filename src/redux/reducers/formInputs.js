@@ -1,49 +1,39 @@
 import { CHANGE_INPUT_VALUE, VALIDATE_INPUTS } from '../actions/actionTypes';
-import {
-  validatePhoneNumber,
-  validateCreditCardFormat,
-  validateDate,
-  validateEmail
-} from 'utils/validation';
 
 const initialState = {
   inputs: [
     {
-      name: 'user-name',
+      name: 'name',
       label: 'ФИО',
       placeholder: 'Иван Иванов',
       value: ''
     },
     {
-      name: 'user-phone',
+      name: 'phone',
       label: 'Номер телефона',
       placeholder: '+7 (961) 112-31-45',
-      value: '',
-      validator: validatePhoneNumber
+      value: ''
     },
     {
-      name: 'user-card',
+      name: 'card',
       label: 'Номер банковской карты',
       placeholder: '0000 0000 0000 0000',
-      value: '',
-      validator: validateCreditCardFormat
+      value: ''
     },
     {
-      name: 'user-date-of-birth',
+      name: 'date-of-birth',
       label: 'Дата рождения',
       placeholder: '01-01-1990',
-      value: '',
-      validator: validateDate
+      value: ''
     },
     {
-      name: 'user-email',
+      name: 'email',
       label: 'Email',
       placeholder: 'email@gmail.com',
-      value: '',
-      validator: validateEmail
+      value: ''
     }
   ],
-  validationStatus: ''
+  validationStatus: false
 };
 
 export const formInputs = (state = initialState, action) => {
@@ -60,24 +50,7 @@ export const formInputs = (state = initialState, action) => {
         )
       };
     case VALIDATE_INPUTS:
-      for (let i = 0; i < state.inputs.length; i++) {
-        const inputData = state.inputs[i];
-
-        if (!inputData.value.trim()) {
-          return {
-            ...state,
-            validationStatus: `Заполните поле ${inputData.label}`
-          };
-        }
-
-        if (inputData.validator !== undefined) {
-          const validationResult = inputData.validator(inputData.value.trim());
-          if (validationResult !== true) {
-            return { ...state, validationStatus: validationResult };
-          }
-        }
-      }
-      return { ...state, validationStatus: true };
+      return { ...state, validationStatus: payload.validationStatus };
     default:
       return state;
   }

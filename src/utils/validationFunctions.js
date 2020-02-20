@@ -1,4 +1,4 @@
-export const validateEmail = (str) => {
+export const validateEmail = str => {
   // eslint-disable-next-line no-useless-escape
   const regexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -9,7 +9,7 @@ export const validateEmail = (str) => {
   return true;
 };
 
-export const validateDate = (str) => {
+export const validateDate = str => {
   const regexp = /^\d{2}([.-])\d{2}\1\d{4}$/;
 
   if (!regexp.test(str)) {
@@ -31,7 +31,7 @@ export const validateDate = (str) => {
   return true;
 };
 
-export const validateCreditCardFormat = (str) => {
+export const validateCreditCardFormat = str => {
   const regex = /[0-9]{4}[ ][0-9]{4}[ ][0-9]{4}[ ][0-9]{4}$/;
 
   if (!regex.test(str)) {
@@ -41,7 +41,7 @@ export const validateCreditCardFormat = (str) => {
   return true;
 };
 
-export const validatePhoneNumber = (str) => {
+export const validatePhoneNumber = str => {
   const regex = /^\+\d{1,3}\s?\(\d{3}\)\s?\d{3}(-\d{2}){2}$/;
 
   if (!regex.test(str)) {

@@ -1,34 +1,34 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import { connect } from 'react-redux';
 import HorizontalList from 'components/HorizontalList/HorizontalList';
 import Form from 'components/Form/Form';
 import ResultForm from 'components/ResultForm/ResultForm';
-import { changeInputValue, validateInputs } from 'redux/actions/actions';
 import Alert from 'components/Alert/Alert';
+import { validateInputsArray } from 'utils/validateInputs';
+import {
+  changeInputValue,
+  changeValidationStatus
+} from 'redux/actions/actions';
 
 function MainContainer({
   inputsData,
   validationStatus,
   handleChange,
-  handleValidation
+  changeValidationStatusHandler
 }) {
-  const [alertMessage, setAlertMessage] = useState('');
-
   const handlePrintClick = () => {
-    if (validationStatus === true) {
+    changeValidationStatusHandler(validateInputsArray(inputsData));
+
+    if (validateInputsArray(inputsData) === true) {
       window.print();
-    } else {
-      setAlertMessage(validationStatus);
     }
   };
 
   const inputChangeHandler = useCallback(
     (value, inputName) => {
       handleChange(value, inputName);
-      handleValidation();
-      setAlertMessage('');
     },
-    [handleChange, handleValidation]
+    [handleChange]
   );
 
   return (
@@ -39,7 +39,7 @@ function MainContainer({
         submitHandler={handlePrintClick}
       />
       <ResultForm inputs={inputsData} />
-      {!alertMessage || <Alert>{validationStatus}</Alert>}
+      {validationStatus === true || <Alert>{validationStatus}</Alert>}
     </HorizontalList>
   );
 }
@@ -52,7 +52,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   handleChange: (value, inputName) =>
     dispatch(changeInputValue(value, inputName)),
-  handleValidation: () => dispatch(validateInputs())
+  changeValidationStatusHandler: validationStatus =>
+    dispatch(changeValidationStatus(validationStatus))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
