@@ -12,6 +12,7 @@ export default function Form({ inputs, inputChangeHandler, submitHandler }) {
           placeholder={input.placeholder}
           name={input.name}
           labelTitle={input.label}
+          value={input.value}
           onChange={e => {
             inputChangeHandler(e.target.value, input.name);
           }}
