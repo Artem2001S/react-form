@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import HorizontalList from 'components/HorizontalList/HorizontalList';
 import Form from 'components/Form/Form';
@@ -13,7 +13,7 @@ import {
 function MainContainer({
   inputsData,
   validationStatus,
-  handleChange,
+  handleInputChange,
   changeValidationStatusHandler
 }) {
   const handlePrintClick = () => {
@@ -25,18 +25,11 @@ function MainContainer({
     }
   };
 
-  const inputChangeHandler = useCallback(
-    (value, inputName) => {
-      handleChange(value, inputName);
-    },
-    [handleChange]
-  );
-
   return (
     <HorizontalList>
       <Form
         inputs={inputsData}
-        inputChangeHandler={inputChangeHandler}
+        inputChangeHandler={handleInputChange}
         submitHandler={handlePrintClick}
       />
       <ResultForm inputs={inputsData} />
@@ -53,7 +46,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleChange: (value, inputName) =>
+  handleInputChange: (value, inputName) =>
     dispatch(changeInputValue(value, inputName)),
   changeValidationStatusHandler: validationStatus =>
     dispatch(changeValidationStatus(validationStatus))
