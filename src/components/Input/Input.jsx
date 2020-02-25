@@ -1,14 +1,17 @@
 import React from 'react';
+import { v4 as uuidv1 } from 'uuid';
 import classes from './Input.module.scss';
 
 export default function Input({ inputData, onChange }) {
+  const uniqueId = uuidv1();
+
   return (
-    <label htmlFor={inputData.name} className={classes.label}>
+    <label htmlFor={uniqueId} className={classes.label}>
       {inputData.label}
 
       {inputData.type === 'text' ? (
         <input
-          id={inputData.name}
+          id={uniqueId}
           className={classes.input}
           placeholder={inputData.placeholder}
           type="text"

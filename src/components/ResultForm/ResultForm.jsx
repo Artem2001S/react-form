@@ -7,9 +7,7 @@ export default function ResultForm({ inputs }) {
       {inputs.map(input => (
         <div key={input.name}>
           <span className={classes.label}>{`${input.label}: `}</span>
-          <label htmlFor={input.name} className={classes.userValue}>
-            {input.value}
-          </label>
+          <span className={classes.userValue}>{input.value}</span>
         </div>
       ))}
     </div>
